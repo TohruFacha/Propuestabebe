@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lobster&family=Pacifico&display=swap');
+
+        body {
+            background-color: #BFD7EA; /* Azul claro */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Lobster', cursive; /* Fuente Lobster */
+            color: #333; /* Texto oscuro para mejor legibilidad */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            transition: opacity 0.5s ease;
+        }
+
+        h1 {
+            margin-bottom: 50px;
+            font-size: 3rem;
+            text-align: center;
+            text-transform: uppercase; /* Texto en mayúsculas */
+            letter-spacing: 2px; /* Espaciado entre letras */
+            color: #fff; /* Color blanco */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombreado */
+        }
+
+        .button-container {
+            display: flex;
+            gap: 60px; /* Aumentado el espacio entre botones */
+        }
+
+        .button {
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1; /* Asegura que los botones estén sobre los emojis */
+        }
+
+        .button-si {
+            background-color: #60AABD; /* Azul más fuerte */
+            color: white;
+            font-family: 'Pacifico', cursive; /* Fuente Pacifico */
+        }
+
+        .button-si:hover {
+            background-color: #3A7F93; /* Azul más oscuro al pasar el ratón */
+        }
+
+        .button-no {
+            background-color: #F68C9E; /* Rosa fuerte */
+            color: white;
+            font-family: 'Pacifico', cursive; /* Fuente Pacifico */
+        }
+
+        .button-no:hover {
+            background-color: #D65976; /* Rosa más oscuro al pasar el ratón */
+        }
+
+        .doodle {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.6;
+            z-index: 0; /* Fuerza a los emojis detrás de los botones */
+        }
+
+        .doodle1 { top: 10%; left: 20%; }
+        .doodle2 { top: 20%; right: 15%; }
+        .doodle3 { bottom: 10%; left: 25%; }
+        .doodle4 { bottom: 20%; right: 20%; }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.8rem;
+            color: #666; /* Texto gris para mejor legibilidad */
+        }
+
+        .contador {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            text-align: center;
+            color: #555; /* Texto gris para mejor legibilidad */
+        }
+    </style>
+</head>
+<body>
+    <h1>¿Te quieres casar conmigo?</h1>
+    <div class="button-container">
+        <button class="button button-si" onclick="abrirVentana()">Sí</button>
+        <button class="button button-no" onclick="ajustarBotones()">No</button>
+    </div>
+    
+    <div class="doodle doodle1">💗</div>
+    <div class="doodle doodle2">💗</div>
+    <div class="doodle doodle3">💗</div>
+    <div class="doodle doodle4">💗</div>
+
+    <div class="footer">
+        <p>Ewinino no estuvo involucrado en la creación de esta página deveritas🙀</p>
+    </div>
+
+    <script>
+        let contadorNo = 0;
+
+        function abrirVentana() {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                const nuevaVentana = window.open("", "", "width=400,height=300");
+                nuevaVentana.document.write(`
+                    <style>
+                        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+                        body {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            height: 100vh;
+                            margin: 0;
+                            font-family: 'Dancing Script', cursive; /* Fuente Dancing Script */
+                            background-color: #F7D4C9; /* Rosa pastel */
+                            color: #333; /* Texto oscuro para mejor legibilidad */
+                            position: relative;
+                        }
+                        h1 {
+                            font-size: 2rem;
+                            text-align: center;
+                            color: #555; /* Texto gris para mejor legibilidad */
+                        }
+                        .heart {
+                            position: absolute;
+                            font-size: 2rem;
+                            opacity: 0.8;
+                        }
+                        .heart1 { top: 10%; left: 15%; }
+                        .heart2 { top: 20%; right: 20%; }
+                        .heart3 { bottom: 15%; left: 20%; }
+                        .heart4 { bottom: 20%; right: 15%; }
+                        .contador {
+                            font-size: 1.2rem;
+                            margin-top: 20px;
+                            text-align: center;
+                            color: #555; /* Texto gris para mejor legibilidad */
+                        }
+                    </style>
+                    <h1>Te amo mi magare bebe chikita y pelona</h1>
+                    <div class="heart heart1">❤️</div>
+                    <div class="heart heart2">💖</div>
+                    <div class="heart heart3">💓</div>
+                    <div class="heart heart4">💞</div>
+                    <div class="contador">Estas son las veces que UTE tocó el botón de no (ORALE). Ahora me debe estos besitos JUAJUA: ${contadorNo}</div>
+                `);
+                document.body.style.opacity = '1';
+            }, 500);
+        }
+
+        function ajustarBotones() {
+            const btnSi = document.querySelector('.button-si');
+            const btnNo = document.querySelector('.button-no');
+            const currentSiFontSize = parseFloat(window.getComputedStyle(btnSi).fontSize);
+            const currentNoFontSize = parseFloat(window.getComputedStyle(btnNo).fontSize);
+            const currentPadding = window.getComputedStyle(btnNo).padding.split(' ');
+
+            // Incrementar contador de veces que se ha presionado el botón No
+            contadorNo++;
+
+            // Reducir tamaño del botón No
+            btnNo.style.fontSize = (currentNoFontSize - 2) + 'px';
+            btnNo.style.width = (parseFloat(window.getComputedStyle(btnNo).width) - 20) + 'px';
+            btnNo.style.height = (parseFloat(window.getComputedStyle(btnNo).height) - 10) + 'px';
+            btnNo.style.padding = (parseFloat(currentPadding[0]) - 5) + 'px ' + 
+                                  (parseFloat(currentPadding[1]) - 10) + 'px';
+
+            // Incrementar tamaño del botón Sí
+            btnSi.style.fontSize = (currentSiFontSize + 2) + 'px';
+            btnSi.style.width = (parseFloat(window.getComputedStyle(btnSi).width) + 20) + 'px';
+            btnSi.style.height = (parseFloat(window.getComputedStyle(btnSi).height) + 10) + 'px';
+        }
+    </script>
+</body>
+</html>
